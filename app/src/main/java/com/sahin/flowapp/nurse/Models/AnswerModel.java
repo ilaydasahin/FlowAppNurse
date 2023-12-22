@@ -1,18 +1,18 @@
 package com.sahin.flowapp.nurse.Models;
 
 public class AnswerModel{
-	private String answerid;
+	private String cevapid;
 	private boolean tf;
-	private String questionid;
-	private String question;
-	private String answer;
+	private String soruid;
+	private String soru;
+	private String cevap;
 
-	public void setAnswerid(String answerid){
-		this.answerid = answerid;
+	public void setCevapid(String cevapid){
+		this.cevapid = cevapid;
 	}
 
-	public String getAnswerid(){
-		return answerid;
+	public String getCevapid(){
+		return cevapid;
 	}
 
 	public void setTf(boolean tf){
@@ -23,39 +23,39 @@ public class AnswerModel{
 		return tf;
 	}
 
-	public void setQuestionid(String questionid){
-		this.questionid = questionid;
+	public void setSoruid(String soruid){
+		this.soruid = soruid;
 	}
 
-	public String getQuestionid(){
-		return questionid;
+	public String getSoruid(){
+		return soruid;
 	}
 
-	public void setQuestion(String question){
-		this.question = question;
+	public void setSoru(String soru){
+		this.soru = soru;
 	}
 
-	public String getQuestion(){
-		return question;
+	public String getSoru(){
+		return soru;
 	}
 
-	public void setAnswer(String answer){
-		this.answer = answer;
+	public void setCevap(String cevap){
+		this.cevap = cevap;
 	}
 
-	public String getAnswer(){
-		return answer;
+	public String getCevap(){
+		return cevap;
 	}
 
 	@Override
  	public String toString(){
 		return 
 			"AnswerModel{" + 
-			"answerid = '" + answerid + '\'' + 
+			"cevapid = '" + cevapid + '\'' +
 			",tf = '" + tf + '\'' + 
-			",questionid = '" + questionid + '\'' + 
-			",question = '" + question + '\'' + 
-			",answer = '" + answer + '\'' + 
+			",soruid = '" + soruid + '\'' +
+			",soru = '" + soru + '\'' +
+			",cevap = '" + cevap + '\'' +
 			"}";
 		}
 }

@@ -17,7 +17,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg1">
+                android:background="@drawable/background1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,45 +36,45 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="22dp"
-                            android:text="Pet Name: "
+                            android:text="Patient Name: "
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/pet_layout_petname"
+                            android:id="@+id/patientlayoutpatientname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16dp"
-                            android:text="Pet Name"
+                            android:text="Patient Name"
                             android:textColor="#9DFFFFFF" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="22dp"
-                            android:text="Pet Kind: "
+                            android:text="Hospital unit: "
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/pet_layout_petkind"
+                            android:id="@+id/patientlayoutcinsname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16dp"
-                            android:text="Pet Kind"
+                            android:text="Hospital unit"
                             android:textColor="#9DFFFFFF" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="22dp"
-                            android:text="Pet Genus: "
+                            android:text="Patinet Genus: "
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/pet_layout_petgenus"
+                            android:id="@+id/patientlayoutturname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16dp"
-                            android:text="Pet Genus"
+                            android:text="Patient Genus"
                             android:textColor="#9DFFFFFF" />
 
 
@@ -85,7 +85,7 @@
                         android:layout_height="match_parent">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/pet_layout_petimage"
+                            android:id="@+id/patientlayoutpatienttimage"
                             android:layout_alignParentRight="true"
                             android:layout_width="90dp"
                             android:layout_height="90dp"

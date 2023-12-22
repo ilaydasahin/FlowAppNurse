@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg1">
+            android:background="@drawable/background1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,31 +33,31 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22dp"
-                        android:text="Campaign: "
+                        android:textSize="22sp"
+                        android:text="Announcement:"
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:id="@+id/campaigns_title"
+                        android:id="@+id/duyuruBaslikText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16dp"
-                        android:text="Campaign Name"
+                        android:textSize="16sp"
+                        android:text="Announcement Name"
                         android:textColor="#9DFFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22dp"
+                        android:textSize="22sp"
                         android:text="Description: "
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:id="@+id/campaigns_text"
+                        android:id="@+id/duyurutext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:text="Campaign Text"
+                        android:text="Announcement Text"
                         android:textColor="#9DFFFFFF" />
 
                 </LinearLayout>
@@ -67,7 +67,7 @@
                     android:layout_height="match_parent">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/campaigns_image"
+                        android:id="@+id/duyuruImageView"
                         android:layout_alignParentRight="true"
                         android:layout_width="90dp"
                         android:layout_height="90dp"

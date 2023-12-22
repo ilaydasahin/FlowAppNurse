@@ -32,63 +32,63 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     public View view;
-    private Button button_pets,button_question,button_answer,button_campaigns,button_calendar,button_recortCard;
+    private Button button_patients,sorusorlinearlayout, cevapLayout, duyuruLinearLayout,button_calendar,button_recortCard;
     private ChangeFragments changeFragments;
     private GetSharedPreferences getSharedPreferences;
-    private String cust_id;
+    private String id;
     private AnswersAdapter answersAdapter;
-    private List<AnswerModel> answerModels;
+    private List<AnswerModel> answersList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        defineLayout();
-        click();
+        tanimla();
+        action();
         return view;
     }
 
-    public void defineLayout()
+    public void tanimla()
     {
-        button_pets = (Button)view.findViewById(R.id.button_pets);
-        button_question = (Button)view.findViewById(R.id.button_question);
-        button_answer = (Button)view.findViewById(R.id.button_answer);
-        button_campaigns=(Button)view.findViewById(R.id.button_campaigns);
+        button_patients = (Button)view.findViewById(R.id.button_patients);
+        sorusorlinearlayout = (Button)view.findViewById(R.id.sorusorlinearlayout);
+        cevapLayout = (Button)view.findViewById(R.id.cevapLayout);
+        duyuruLinearLayout =(Button)view.findViewById(R.id.duyuruLinearLayout);
         button_calendar = (Button)view.findViewById(R.id.button_calendar);
         button_recortCard = (Button)view.findViewById(R.id.button_recortCard);
         changeFragments = new ChangeFragments(getContext());
         getSharedPreferences = new GetSharedPreferences(getActivity());
-        cust_id = getSharedPreferences.getSession().getString("cust_id",null);
-        answerModels = new ArrayList<>();
+        id = getSharedPreferences.getSession().getString("id",null);
+        answersList = new ArrayList<>();
     }
 
-    public void click(){
-        button_pets.setOnClickListener(new View.OnClickListener() {
+    public void action(){
+        button_patients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeFragments.change(new UserPetsFragment());
+                changeFragments.change(new UserPatientFragment());
             }
         });
 
-        button_question.setOnClickListener(new View.OnClickListener() {
+        sorusorlinearlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openQuestionAlert();
             }
         });
 
-        button_answer.setOnClickListener(new View.OnClickListener() {
+        cevapLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getAnswers(cust_id);
+                getAnswers(id);
             }
         });
 
-        button_campaigns.setOnClickListener(new View.OnClickListener() {
+        duyuruLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeFragments.change(new CampaignsFragment());
+                changeFragments.change(new DuyuruFragment());
             }
         });
 
@@ -110,31 +110,31 @@ public class HomeFragment extends Fragment {
     public void openQuestionAlert()
     {
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.alert_layout_question,null);
+        View view = layoutInflater.inflate(R.layout.sorusoralertlayout,null);
 
-        final EditText edittext_question = (EditText)view.findViewById(R.id.edittext_question);
-        MaterialButton button_question = (MaterialButton)view.findViewById(R.id.button_question);
+        final EditText sorusoredittext = (EditText)view.findViewById(R.id.sorusoredittext);
+        MaterialButton sorusorbuton = (MaterialButton)view.findViewById(R.id.sorusorbuton);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(view);
         alert.setCancelable(true);
         final AlertDialog alertDialog = alert.create();
 
-        button_question.setOnClickListener(new View.OnClickListener() {
+        sorusorbuton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String question = edittext_question.getText().toString();
-                edittext_question.setText("");
+                String soru = sorusoredittext.getText().toString();
+                sorusoredittext.setText("");
                 alertDialog.cancel();
-                askQuestion(cust_id,question,alertDialog);
+                askQuestion(id,soru,alertDialog);
             }
         });
         alertDialog.show();
     }
 
-    public void askQuestion(String cust_id, String question,final AlertDialog alr)
+    public void askQuestion(String hem_id, String text,final AlertDialog alr)
     {
-        Call<AskQuestionModel> req = ManagerAll.getInstance().askQuestion(cust_id,question);
+        Call<AskQuestionModel> req = ManagerAll.getInstance().soruSor(hem_id,text);
         req.enqueue(new Callback<AskQuestionModel>() {
             @Override
             public void onResponse(Call<AskQuestionModel> call, Response<AskQuestionModel> response) {
@@ -156,9 +156,9 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void getAnswers(String cust_id)
+    public void getAnswers(String hem_id)
     {
-        Call<List<AnswerModel>> req = ManagerAll.getInstance().getAnswers(cust_id);
+        Call<List<AnswerModel>> req = ManagerAll.getInstance().getAnswers(hem_id);
         req.enqueue(new Callback<List<AnswerModel>>() {
             @Override
             public void onResponse(Call<List<AnswerModel>> call, Response<List<AnswerModel>> response) {
@@ -166,8 +166,9 @@ public class HomeFragment extends Fragment {
                 {
                     if(response.isSuccessful())
                     {
-                        answerModels = response.body();
-                        answersAdapter = new AnswersAdapter(answerModels,getContext());
+
+                        answersList = response.body();
+                        answersAdapter = new AnswersAdapter(answersList,getContext());
                         openAnswerAlert();
                     }
                 }
@@ -186,17 +187,17 @@ public class HomeFragment extends Fragment {
     public void openAnswerAlert()
     {
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.alert_answer_item,null);
+        View view = layoutInflater.inflate(R.layout.cevapalertlayout,null);
 
-        RecyclerView answerRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_answer);
+        RecyclerView cevapRecylerView = (RecyclerView)view.findViewById(R.id.cevapRecylerView);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(view);
         alert.setCancelable(true);
         final AlertDialog alertDialog = alert.create();
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),1);
-        answerRecyclerView.setLayoutManager(layoutManager);
-        answerRecyclerView.setAdapter(answersAdapter);
+        cevapRecylerView.setLayoutManager(layoutManager);
+        cevapRecylerView.setAdapter(answersAdapter);
 
         alertDialog.show();
     }

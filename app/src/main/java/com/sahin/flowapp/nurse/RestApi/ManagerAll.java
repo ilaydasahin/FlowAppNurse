@@ -2,10 +2,10 @@ package com.sahin.flowapp.nurse.RestApi;
 
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.AskQuestionModel;
-import com.sahin.flowapp.nurse.Models.CampaignsModel;
+import com.sahin.flowapp.nurse.Models.DuyuruModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
+import com.sahin.flowapp.nurse.Models.HasModel;
 import com.sahin.flowapp.nurse.Models.LoginModel;
-import com.sahin.flowapp.nurse.Models.PetModel;
 import com.sahin.flowapp.nurse.Models.RegisterPojo;
 import com.sahin.flowapp.nurse.Models.VacModel;
 
@@ -28,39 +28,39 @@ public class ManagerAll extends BaseManager {
         return  x ;
     }
 
-    public Call<LoginModel> loginUser(String email , String password)
+    public Call<LoginModel> girisYap(String mail , String parola)
     {
-        Call<LoginModel> x = getRestApi().loginUser(email,password);
+        Call<LoginModel> x = getRestApi().loginUser(mail,parola);
         return  x ;
     }
 
-    public Call<List<PetModel>> getPets(String id)
+    public Call<List<HasModel>> getHasta(String id)
     {
-        Call<List<PetModel>> x = getRestApi().getPets(id);
+        Call<List<HasModel>> x = getRestApi().getHasta(id);
         return  x ;
     }
 
-    public Call<AskQuestionModel> askQuestion(String id , String question)
+    public Call<AskQuestionModel> soruSor(String id , String soru)
     {
-        Call<AskQuestionModel> x = getRestApi().askQuestion(id,question);
+        Call<AskQuestionModel> x = getRestApi().soruSor(id,soru);
         return  x ;
     }
 
-    public Call<List<AnswerModel>> getAnswers(String cust_id)
+    public Call<List<AnswerModel>> getAnswers(String id)
     {
-        Call<List<AnswerModel>> x = getRestApi().getAnswers(cust_id);
+        Call<List<AnswerModel>> x = getRestApi().getAnswers(id);
         return  x ;
     }
 
-    public Call<List<CampaignsModel>> getCampaigns()
+    public Call<List<DuyuruModel>> getDuyuru()
     {
-        Call<List<CampaignsModel>> x = getRestApi().getCampaigns();
+        Call<List<DuyuruModel>> x = getRestApi().getDuyuru();
         return  x ;
     }
 
-    public Call<DeleteAnswerModel> deleteAnswer(String answer , String question)
+    public Call<DeleteAnswerModel> deleteAnswer(String cevap , String soru)
     {
-        Call<DeleteAnswerModel> x = getRestApi().deleteAnswer(answer,question);
+        Call<DeleteAnswerModel> x = getRestApi().deleteAnswer(cevap,soru);
         return  x ;
     }
 

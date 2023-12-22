@@ -34,7 +34,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/circle"
                     android:padding="10dp"
                     android:src="@drawable/kayit_img" />
@@ -164,8 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativeLayout2"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="11dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="15dp"
                 android:background="@color/colorPrimary"
                 android:fontFamily="sans-serif-medium"
                 android:text="SIGN UP"

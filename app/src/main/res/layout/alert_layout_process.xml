@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style="http://schemas.android.com/tools">
+    android:visibility="visible"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -21,26 +21,26 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/petNameText"
+            android:id="@+id/patientNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#505FB1"
             android:gravity="center"
             android:layout_margin="10dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/petCircleImageView"
+            android:id="@+id/patientCircleImageView"
             android:layout_width="150dp"
             android:layout_gravity="center"
             android:layout_height="150dp" />
 
         <TextView
-            android:id="@+id/petInfoText"
+            android:id="@+id/patientInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="#505FB1"
             android:gravity="center"

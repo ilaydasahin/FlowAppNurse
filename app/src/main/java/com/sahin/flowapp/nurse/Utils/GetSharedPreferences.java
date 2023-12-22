@@ -18,13 +18,13 @@ public class GetSharedPreferences {
         return sharedPreferences;
     }
 
-    public void setSession(String id,String username,String email)
+    public void setSession(String id,String username,String mailAdres)
     {
         sharedPreferences = activity.getApplicationContext().getSharedPreferences("session",0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("cust_id",id);
+        editor.putString("id",id);
         editor.putString("username",username);
-        editor.putString("email",email);
+        editor.putString("mailadres",mailAdres);
         editor.commit();
     }
 

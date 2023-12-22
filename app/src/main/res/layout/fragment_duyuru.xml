@@ -3,36 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.UserPetsFragment">
+    android:orientation="vertical"
+    tools:context=".Fragments.DuyuruFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Your Pets"
+        android:text="Announcement"
         android:gravity="center"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#5086de" />
-
+        android:textColor="#505FB1" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:cardCornerRadius="10dp"
         android:elevation="20dp">
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/petlistrecyclerview"
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="match_parent">
-
-
+        android:id="@+id/duyuruRecView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>

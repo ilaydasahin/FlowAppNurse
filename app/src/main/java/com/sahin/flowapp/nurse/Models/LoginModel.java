@@ -1,71 +1,64 @@
 package com.sahin.flowapp.nurse.Models;
 
 public class LoginModel{
-	private String password;
 	private boolean tf;
+	private String mailadres;
+	private String parola;
 	private String id;
 	private String text;
-	private String email;
 	private String username;
-
-	public void setPassword(String password){
-		this.password = password;
-	}
-
-	public String getPassword(){
-		return password;
-	}
 
 	public void setTf(boolean tf){
 		this.tf = tf;
 	}
-
 	public boolean isTf(){
 		return tf;
 	}
+	public void setMailadres(String mailadres){
+		this.mailadres = mailadres;
+	}
+	public String getMailadres(){
+		return mailadres;
+	}
 
-	public void setId(String id){
-		this.id = id;
+	public String getParola(){
+		return parola;
+	}
+	public void setParola(String parola){
+		this.parola = parola;
 	}
 
 	public String getId(){
 		return id;
 	}
 
-	public void setText(String text){
-		this.text = text;
-	}
-
 	public String getText(){
 		return text;
 	}
-
-	public void setEmail(String email){
-		this.email = email;
+	public void setId(String id){
+		this.id = id;
 	}
-
-	public String getEmail(){
-		return email;
+	public void setText(String text){
+		this.text = text;
 	}
 
 	public void setUsername(String username){
 		this.username = username;
 	}
-
 	public String getUsername(){
 		return username;
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"LoginModel{" + 
-			"password = '" + password + '\'' + 
-			",tf = '" + tf + '\'' + 
-			",id = '" + id + '\'' + 
-			",text = '" + text + '\'' + 
-			",email = '" + email + '\'' + 
-			",username = '" + username + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"LoginModel{" +
+						"parola = '" + parola + '\'' +
+						",tf = '" + tf + '\'' +
+						",id = '" + id + '\'' +
+						",text = '" + text + '\'' +
+						",mailadres = '" + mailadres + '\'' +
+						",username = '" + username + '\'' +
+						"}";
+	}
 }

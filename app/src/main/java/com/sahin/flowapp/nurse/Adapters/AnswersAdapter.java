@@ -1,17 +1,16 @@
 package com.sahin.flowapp.nurse.Adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import com.google.android.material.button.MaterialButton;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
 import com.sahin.flowapp.nurse.R;
@@ -37,34 +36,34 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.alert_layout_answer,viewGroup,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.cevapitemlayout,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
 
-        viewHolder.answer_question.setText("Question: "+ list.get(position).getQuestion().toString());
-        viewHolder.answer_answer.setText("Answer: "+ list.get(position).getAnswer().toString());
+        holder.cevapSoruText.setText("Question: "+ list.get(position).getSoru().toString());
+        holder.cevapCevapText.setText("Answer: "+ list.get(position).getCevap().toString());
 
-        viewHolder.button_answer.setOnClickListener(new View.OnClickListener() {
+        holder.cevapSilbuton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                delete(list.get(position).getAnswerid().toString(),list.get(position).getQuestionid().toString(),position);
+                deleteToService(list.get(position).getCevapid().toString(),list.get(position).getSoruid().toString(),position);
             }
         });
     }
 
-    public void deleteAndUpdateList(int position)
+    public void deleteToList(int position)
     {
         list.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();
     }
 
-    public void delete(String answerid,String questionid,final int pos)
+    public void deleteToService(String cevapid, String soruid, final int pos)
     {
-        Call<DeleteAnswerModel> req = ManagerAll.getInstance().deleteAnswer(answerid,questionid);
+        Call<DeleteAnswerModel> req = ManagerAll.getInstance().deleteAnswer(cevapid,soruid);
         req.enqueue(new Callback<DeleteAnswerModel>() {
             @Override
             public void onResponse(Call<DeleteAnswerModel> call, Response<DeleteAnswerModel> response) {
@@ -73,7 +72,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
                     if(response.isSuccessful())
                     {
                         Toast.makeText(context,response.body().getText(),Toast.LENGTH_LONG).show();
-                        deleteAndUpdateList(pos);
+                        deleteToList(pos);
                     }
                 }
                 else
@@ -96,15 +95,15 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView answer_question, answer_answer;
-        MaterialButton button_answer;
+        TextView cevapSoruText, cevapCevapText;
+        MaterialButton cevapSilbuton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            answer_question = (TextView)itemView.findViewById(R.id.answer_question);
-            answer_answer = (TextView)itemView.findViewById(R.id.answer_answer);
-            button_answer = (MaterialButton)itemView.findViewById(R.id.button_answer);
+            cevapSoruText = (TextView)itemView.findViewById(R.id.cevapSoruText);
+            cevapCevapText = (TextView)itemView.findViewById(R.id.cevapCevapText);
+            cevapSilbuton = (MaterialButton)itemView.findViewById(R.id.cevapSilbuton);
         }
     }
 }

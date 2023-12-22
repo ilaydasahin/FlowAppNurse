@@ -1,17 +1,17 @@
 package com.sahin.flowapp.nurse.Models;
 
-public class CampaignsModel{
-	private String image;
+public class DuyuruModel {
+	private String resim;
 	private boolean tf;
 	private String text;
-	private String title;
+	private String baslik;
 
-	public void setImage(String image){
-		this.image = image;
+	public void setResim(String resim){
+		this.resim = resim;
 	}
 
-	public String getImage(){
-		return image;
+	public String getResim(){
+		return resim;
 	}
 
 	public void setTf(boolean tf){
@@ -30,22 +30,22 @@ public class CampaignsModel{
 		return text;
 	}
 
-	public void setTitle(String title){
-		this.title = title;
+	public void setBaslik(String baslik){
+		this.baslik = baslik;
 	}
 
-	public String getTitle(){
-		return title;
+	public String getBaslik(){
+		return baslik;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"CampaignsModel{" + 
-			"image = '" + image + '\'' + 
+			"DuyuruModel{" +
+			"resim = '" + resim + '\'' +
 			",tf = '" + tf + '\'' + 
 			",text = '" + text + '\'' + 
-			",title = '" + title + '\'' + 
+			",baslik = '" + baslik + '\'' +
 			"}";
 		}
 }

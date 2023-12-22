@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.button.MaterialButton;
 import com.sahin.flowapp.nurse.Models.VacModel;
 import com.sahin.flowapp.nurse.R;
 import com.sahin.flowapp.nurse.RestApi.ManagerAll;
@@ -69,7 +67,7 @@ public class VacFragment extends Fragment {
         dateList = new ArrayList<>();
         getSharedPreferences = new GetSharedPreferences(getActivity());
         id = getSharedPreferences.getSession().getString("cust_id",null);
-        System.out.println("fucking"+id);
+        System.out.println("deneme"+id);
     }
 
     public void getVac(String custid)
@@ -135,18 +133,18 @@ public class VacFragment extends Fragment {
     public void openQuestionAlert(String petName,String vacDate,String vacName,String petImage)
     {
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.alert_layout_vac,null);
+        View view = layoutInflater.inflate(R.layout.alert_layout_process,null);
 
-        TextView petNameText = (TextView)view.findViewById(R.id.petNameText);
-        TextView petInfoText = (TextView)view.findViewById(R.id.petInfoText);
-        CircleImageView petCircleImageView = (CircleImageView)view.findViewById(R.id.petCircleImageView);
+        TextView petNameText = (TextView)view.findViewById(R.id.patientNameText);
+        TextView petInfoText = (TextView)view.findViewById(R.id.patientInfoText);
+        CircleImageView petCircleImageView = (CircleImageView)view.findViewById(R.id.patientCircleImageView);
 
         petNameText.setText(petName);
         petInfoText.setText("Your pet named "+petName+" has a " +vacName +" vaccine on " +vacDate+".");
         Picasso.get().load(petImage).into(petCircleImageView);
 
-        final EditText edittext_question = (EditText)view.findViewById(R.id.edittext_question);
-        MaterialButton button_question = (MaterialButton)view.findViewById(R.id.button_question);
+        //final EditText sorusoredittext = (EditText)view.findViewById(R.id.sorusoredittext);
+       // MaterialButton sorusorlinearlayout = (MaterialButton)view.findViewById(R.id.sorusorlinearlayout);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(view);

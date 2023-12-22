@@ -41,9 +41,9 @@
                     android:textSize="22sp" />
 
                 <ImageView
-                    android:layout_width="135dp"
-                    android:layout_height="135dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/circle"
                     android:padding="10dp"
                     android:src="@drawable/kayit_img" />
@@ -79,11 +79,14 @@
                       />
 
                 <EditText
-                    android:id="@+id/loginEmail"
+                    android:id="@+id/loginMailAdres"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imgView_emailIcon"
                     android:layout_alignParentTop="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="-2dp"
                     android:layout_toRightOf="@+id/imgView_emailIcon"
                     android:background="@color/editTextBG"
                     android:hint="Email"

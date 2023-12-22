@@ -2,10 +2,10 @@ package com.sahin.flowapp.nurse.RestApi;
 
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.AskQuestionModel;
-import com.sahin.flowapp.nurse.Models.CampaignsModel;
+import com.sahin.flowapp.nurse.Models.DuyuruModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
+import com.sahin.flowapp.nurse.Models.HasModel;
 import com.sahin.flowapp.nurse.Models.LoginModel;
-import com.sahin.flowapp.nurse.Models.PetModel;
 import com.sahin.flowapp.nurse.Models.RegisterPojo;
 import com.sahin.flowapp.nurse.Models.VacModel;
 
@@ -23,27 +23,28 @@ public interface RestApi {
     Call<RegisterPojo> registerUser(@Field("mailAdres") String mailAdres, @Field("kadi") String kadi, @Field("pass") String pass);
 
     @FormUrlEncoded
-    @POST("/flowservis/login.php")
-    Call<LoginModel> loginUser(@Field("email") String email, @Field("password") String username);
+    @POST("/flowservis/girisyap.php")
+    Call<LoginModel> loginUser(@Field("mailadres") String mailAdres, @Field("sifre") String pass);
 
     @FormUrlEncoded
-    @POST("/flowservis/mypets.php")
-    Call<List<PetModel>> getPets(@Field("id") String id);
+    @POST("/flowservis/hastalarim.php")
+    Call<List<HasModel>> getHasta(@Field("hemid") String hem_id);
+
 
     @FormUrlEncoded
-    @POST("/flowservis/askme.php")
-    Call<AskQuestionModel> askQuestion(@Field("id") String id, @Field("question") String question);
+    @POST("/flowservis/sorusor.php")
+    Call<AskQuestionModel> soruSor(@Field("id") String id, @Field("soru") String soru);
 
     @FormUrlEncoded
-    @POST("/flowservis/deleteanswer.php")
-    Call<DeleteAnswerModel> deleteAnswer(@Field("answer") String answerid, @Field("question") String questionid);
+    @POST("/flowservis/cevapsil.php")
+    Call<DeleteAnswerModel> deleteAnswer(@Field("cevap") String cevapid, @Field("soru") String soruid);
 
     @FormUrlEncoded
-    @POST("/flowservis/answer.php")
-    Call<List<AnswerModel>> getAnswers(@Field("custid") String cust_id);
+    @POST("/flowservis/cevaplar.php")
+    Call<List<AnswerModel>> getAnswers(@Field("hem_id") String hem_id);
 
-    @GET("/flowservis/campaigns.php")
-    Call<List<CampaignsModel>> getCampaigns();
+    @GET("/flowservis/duyuru.php")
+    Call<List<DuyuruModel>> getDuyuru();
 
     @FormUrlEncoded
     @POST("/flowservis/vaccalendar.php")

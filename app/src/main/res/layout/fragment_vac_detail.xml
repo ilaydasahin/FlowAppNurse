@@ -6,7 +6,7 @@
     tools:context=".Fragments.VacDetailFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vacDetailRecyclerView"
+        android:id="@+id/processDetailRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

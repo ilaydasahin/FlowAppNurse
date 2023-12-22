@@ -26,10 +26,10 @@ public class ChangeFragments {
                 .commit();
     }
 
-    public void changeWithParameters(Fragment fragment,String petId)
+    public void changeWithParameters(Fragment fragment,String hasId)
     {
         Bundle bundle = new Bundle();
-        bundle.putString("petid",petId);
+        bundle.putString("has_id",hasId);
         fragment.setArguments(bundle);
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainFrameLayout,fragment,"fragment")

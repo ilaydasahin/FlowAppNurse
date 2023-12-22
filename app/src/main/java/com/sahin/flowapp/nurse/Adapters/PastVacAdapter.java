@@ -3,7 +3,6 @@ package com.sahin.flowapp.nurse.Adapters;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,7 @@ public class PastVacAdapter extends RecyclerView.Adapter<PastVacAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.reportcard__pastvac_item_layout,viewGroup,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.reportcard__process_item_layout,viewGroup,false);
         return new ViewHolder(view);
     }
 
@@ -54,8 +53,8 @@ public class PastVacAdapter extends RecyclerView.Adapter<PastVacAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            pastVacNameText = (TextView)itemView.findViewById(R.id.pastVacNameText);
-            pastVacInfoText = (TextView)itemView.findViewById(R.id.pastVacInfoText);
+            pastVacNameText = (TextView)itemView.findViewById(R.id.processNameText);
+            pastVacInfoText = (TextView)itemView.findViewById(R.id.processInfoText);
             //pastVacCircleImageView = (CircleImageView)itemView.findViewById(R.id.pastVacCircleImageView);
         }
     }

@@ -1,6 +1,7 @@
 package com.sahin.flowapp.nurse.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sahin.flowapp.nurse.Adapters.ReportCardAdapter;
+import com.sahin.flowapp.nurse.Adapters.PatientAdapter;
 import com.sahin.flowapp.nurse.Models.HasModel;
 import com.sahin.flowapp.nurse.R;
 import com.sahin.flowapp.nurse.RestApi.ManagerAll;
@@ -25,52 +26,56 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ReportCardFragment extends Fragment {
+public class UserPatientFragment extends Fragment {
 
-    private RecyclerView reportCardRecyclerView;
-    private View view;
-    private ReportCardAdapter reportCardAdapter;
-    private List<HasModel> petList;
+    public   View view;
+    private RecyclerView patientlistrecyclerview;
+    private PatientAdapter patientAdapter;
+    private List<HasModel> patientList;
     private ChangeFragments changeFragments;
-    private String cust_id;
+    private String hem_id;
     private GetSharedPreferences getSharedPreferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_report_card, container, false);
-        defineLayout();
-        getPets(cust_id);
+
+        view= inflater.inflate(R.layout.fragment_user_patient, container, false);
+        tanimla();
+        getHasta(hem_id);
 
         return view;
     }
 
-    public void defineLayout()
+
+    public void tanimla()
     {
-        petList = new ArrayList<>();
-        reportCardRecyclerView = view.findViewById(R.id.reportcardrecyclerview);
+        patientList = new ArrayList<>();
+        patientlistrecyclerview = view.findViewById(R.id.patientlistrecyclerview);
         RecyclerView.LayoutManager mng = new GridLayoutManager(getContext(),1);
-        reportCardRecyclerView.setLayoutManager(mng);
+        patientlistrecyclerview.setLayoutManager(mng);
         changeFragments = new ChangeFragments(getContext());
         getSharedPreferences = new GetSharedPreferences(getActivity());
-        cust_id = getSharedPreferences.getSession().getString("cust_id",null);
+        hem_id = getSharedPreferences.getSession().getString("id",null);
     }
 
-    public void getPets(String cust_id)
+    public void getHasta(String hem_id)
     {
-        Call<List<HasModel>> req = ManagerAll.getInstance().getHasta(cust_id);
+        Call<List<HasModel>> req = ManagerAll.getInstance().getHasta(hem_id);
         req.enqueue(new Callback<List<HasModel>>() {
             @Override
             public void onResponse(Call<List<HasModel>> call, Response<List<HasModel>> response) {
                 if(response.body().get(0).isTf())
                 {
-                    petList = response.body();
-                    reportCardAdapter = new ReportCardAdapter(petList,getContext());
-                    reportCardRecyclerView.setAdapter(reportCardAdapter);
+                    Log.i("liste",response.body().toString());
+                    patientList = response.body();
+                    patientAdapter = new PatientAdapter(patientList,getContext());
+                    patientlistrecyclerview.setAdapter(patientAdapter);
+                    Toast.makeText(getContext(),"You have "+ patientList.size()+" registered patient in the system.",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
+                    Toast.makeText(getContext(),"Your patient is not registered in the system.",Toast.LENGTH_LONG).show();
                     changeFragments.change(new HomeFragment());
                 }
             }
@@ -81,4 +86,7 @@ public class ReportCardFragment extends Fragment {
             }
         });
     }
+
+
+
 }
