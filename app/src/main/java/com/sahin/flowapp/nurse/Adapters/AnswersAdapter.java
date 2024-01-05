@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
 import com.sahin.flowapp.nurse.R;
@@ -96,14 +96,14 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView cevapSoruText, cevapCevapText;
-        MaterialButton cevapSilbuton;
+    Button cevapSilbuton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             cevapSoruText = (TextView)itemView.findViewById(R.id.cevapSoruText);
             cevapCevapText = (TextView)itemView.findViewById(R.id.cevapCevapText);
-            cevapSilbuton = (MaterialButton)itemView.findViewById(R.id.cevapSilbuton);
+            cevapSilbuton = (Button)itemView.findViewById(R.id.cevapSilbuton);
         }
     }
 }

@@ -31,8 +31,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha03'
-    implementation 'com.google.android.material:material:1.12.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.12.0-alpha02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha13'
     implementation 'androidx.media3:media3-common:1.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha02'
@@ -52,7 +52,7 @@ dependencies {
     implementation 'androidx.fragment:fragment:1.7.0-alpha07' // Use the appropriate version
  
     // Use the appropriate version for Material Components
-    implementation 'com.squareup:android-times-square:1.7.11@aar'
+
     androidTestImplementation 'androidx.test:runner:1.6.0-alpha05' // Use the appropriate version
     androidTestImplementation 'androidx.test:rules:1.6.0-alpha02'  // Use the appropriate version
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha02'
@@ -64,7 +64,7 @@ dependencies {
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation('com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11')
-    androidTestImplementation 'androidx.test:core:1.6.0-alpha03'
+    androidTestImplementation 'androidx.test:core:1.6.0-alpha04'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     implementation 'com.squareup.picasso:picasso:2.71828'
     // Room
@@ -77,6 +77,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.2'
     // WorkManager
     implementation 'androidx.work:work-runtime:2.9.0'
-
+    implementation 'com.squareup:android-times-square:1.7.11@aar'
 
 }

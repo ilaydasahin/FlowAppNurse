@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.sahin.flowapp.nurse.Adapters.AnswersAdapter;
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.AskQuestionModel;
@@ -32,7 +31,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     public View view;
-    private Button button_patients,sorusorlinearlayout, cevapLayout, duyuruLinearLayout,button_calendar,button_recortCard;
+    private Button button_patients,sorusorlinearlayout, cevapLayout, duyuruLinearLayout, islemlayout,button_recortCard;
     private ChangeFragments changeFragments;
     private GetSharedPreferences getSharedPreferences;
     private String id;
@@ -55,7 +54,7 @@ public class HomeFragment extends Fragment {
         sorusorlinearlayout = (Button)view.findViewById(R.id.sorusorlinearlayout);
         cevapLayout = (Button)view.findViewById(R.id.cevapLayout);
         duyuruLinearLayout =(Button)view.findViewById(R.id.duyuruLinearLayout);
-        button_calendar = (Button)view.findViewById(R.id.button_calendar);
+        islemlayout = (Button)view.findViewById(R.id.islemlayout);
         button_recortCard = (Button)view.findViewById(R.id.button_recortCard);
         changeFragments = new ChangeFragments(getContext());
         getSharedPreferences = new GetSharedPreferences(getActivity());
@@ -92,17 +91,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        button_calendar.setOnClickListener(new View.OnClickListener() {
+        islemlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeFragments.change(new VacFragment());
+                changeFragments.change(new IslemFragment());
             }
         });
 
         button_recortCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeFragments.change(new ReportCardFragment());
+                changeFragments.change(new SanalKarnePatientFragment());
             }
         });
     }
@@ -113,7 +112,7 @@ public class HomeFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.sorusoralertlayout,null);
 
         final EditText sorusoredittext = (EditText)view.findViewById(R.id.sorusoredittext);
-        MaterialButton sorusorbuton = (MaterialButton)view.findViewById(R.id.sorusorbuton);
+       Button sorusorbuton = (Button)view.findViewById(R.id.sorusorbuton);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(view);
@@ -156,49 +155,56 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void getAnswers(String hem_id)
-    {
-        Call<List<AnswerModel>> req = ManagerAll.getInstance().getAnswers(hem_id);
+    public void getAnswers(String hem_id){
+
+        Call<List<AnswerModel>> req=ManagerAll.getInstance().getAnswers(hem_id);
         req.enqueue(new Callback<List<AnswerModel>>() {
             @Override
             public void onResponse(Call<List<AnswerModel>> call, Response<List<AnswerModel>> response) {
-                if(response.body().get(0).isTf())
-                {
-                    if(response.isSuccessful())
-                    {
+                if(response.body().get(0).isTf()){
+                    if(response.isSuccessful()){
+                        answersList=response.body();
+                        answersAdapter =new AnswersAdapter(answersList,getContext());
+                        openAnswerAlert();//başarılıysa direk açılsın
 
-                        answersList = response.body();
-                        answersAdapter = new AnswersAdapter(answersList,getContext());
-                        openAnswerAlert();
                     }
+
+
                 }
                 else{
-                    Toast.makeText(getContext(),"There is no answer...",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getContext(),"Herhangibir cevap yok...",Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override
             public void onFailure(Call<List<AnswerModel>> call, Throwable t) {
+
                 Toast.makeText(getContext(),Warning.internetProblemText,Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
-    public void openAnswerAlert()
-    {
-        LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.cevapalertlayout,null);
 
-        RecyclerView cevapRecylerView = (RecyclerView)view.findViewById(R.id.cevapRecylerView);
+
+    public void openAnswerAlert() {
+        //alert diyalog acilması icin kodlama yapmamız lazım
+        LayoutInflater layoutInflater = this.getLayoutInflater();//?
+        View view = layoutInflater.inflate(R.layout.cevapalertlayout, null);
+
+        RecyclerView cevapRecylerView=view.findViewById(R.id.cevapRecylerView);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(view);
         alert.setCancelable(true);
+        //artık alert dialogumuzu açabiliriz
         final AlertDialog alertDialog = alert.create();
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),1);
-        cevapRecylerView.setLayoutManager(layoutManager);
+        cevapRecylerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         cevapRecylerView.setAdapter(answersAdapter);
 
         alertDialog.show();
+
     }
 }

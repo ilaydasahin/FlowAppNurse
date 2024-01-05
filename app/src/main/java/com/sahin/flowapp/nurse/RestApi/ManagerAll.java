@@ -1,13 +1,13 @@
 package com.sahin.flowapp.nurse.RestApi;
 
 import com.sahin.flowapp.nurse.Models.AnswerModel;
+import com.sahin.flowapp.nurse.Models.IslemModel;
 import com.sahin.flowapp.nurse.Models.AskQuestionModel;
 import com.sahin.flowapp.nurse.Models.DuyuruModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
 import com.sahin.flowapp.nurse.Models.HasModel;
 import com.sahin.flowapp.nurse.Models.LoginModel;
 import com.sahin.flowapp.nurse.Models.RegisterPojo;
-import com.sahin.flowapp.nurse.Models.VacModel;
 
 import java.util.List;
 
@@ -64,15 +64,15 @@ public class ManagerAll extends BaseManager {
         return  x ;
     }
 
-    public Call<List<VacModel>> getVac(String custid)
+    public Call<List<IslemModel>> getIslem(String id)
     {
-        Call<List<VacModel>> x = getRestApi().getVac(custid);
+        Call<List<IslemModel>> x = getRestApi().getIslem(id);
         return  x ;
     }
 
-    public Call<List<VacModel>> getPastVac(String custid,String petid)
+    public Call<List<IslemModel>> getGecmisIslem(String id, String has_id)
     {
-        Call<List<VacModel>> x = getRestApi().getPastVac(custid,petid);
+        Call<List<IslemModel>> x = getRestApi().getGecmisIslem(id,has_id);
         return  x ;
     }
 }

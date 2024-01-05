@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 getSharedPreferences.getString("username",null) == null)
         {
 
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-            startActivity(intent);
+            Intent ıntent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(ıntent);
             finish();
         }
     }

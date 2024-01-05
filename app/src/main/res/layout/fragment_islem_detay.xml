@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.VacFragment">
+    tools:context=".Fragments.IslemDetailFragment">
 
-    <com.squareup.timessquare.CalendarPickerView
-        android:id="@+id/calendarPickerView"
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/islemDetayRecView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
 
-      />
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

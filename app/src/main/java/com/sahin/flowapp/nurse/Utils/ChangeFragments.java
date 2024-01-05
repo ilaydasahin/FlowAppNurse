@@ -29,7 +29,7 @@ public class ChangeFragments {
     public void changeWithParameters(Fragment fragment,String hasId)
     {
         Bundle bundle = new Bundle();
-        bundle.putString("has_id",hasId);
+        bundle.putString("hasid",hasId);
         fragment.setArguments(bundle);
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainFrameLayout,fragment,"fragment")

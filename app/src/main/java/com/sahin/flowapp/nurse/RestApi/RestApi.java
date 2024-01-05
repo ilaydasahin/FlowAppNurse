@@ -2,12 +2,12 @@ package com.sahin.flowapp.nurse.RestApi;
 
 import com.sahin.flowapp.nurse.Models.AnswerModel;
 import com.sahin.flowapp.nurse.Models.AskQuestionModel;
-import com.sahin.flowapp.nurse.Models.DuyuruModel;
 import com.sahin.flowapp.nurse.Models.DeleteAnswerModel;
+import com.sahin.flowapp.nurse.Models.DuyuruModel;
 import com.sahin.flowapp.nurse.Models.HasModel;
+import com.sahin.flowapp.nurse.Models.IslemModel;
 import com.sahin.flowapp.nurse.Models.LoginModel;
 import com.sahin.flowapp.nurse.Models.RegisterPojo;
-import com.sahin.flowapp.nurse.Models.VacModel;
 
 import java.util.List;
 
@@ -47,10 +47,12 @@ public interface RestApi {
     Call<List<DuyuruModel>> getDuyuru();
 
     @FormUrlEncoded
-    @POST("/flowservis/vaccalendar.php")
-    Call<List<VacModel>> getVac(@Field("custid") String custid);
+    @POST("/flowservis/islemtakip.php")
+    Call<List<IslemModel>> getIslem(@Field("id") String id);
+
+
 
     @FormUrlEncoded
-    @POST("/flowservis/pastvac.php")
-    Call<List<VacModel>> getPastVac(@Field("custid") String custid,@Field("petid") String petid);
+    @POST("/flowservis/gecmisislem.php")
+    Call<List<IslemModel>> getGecmisIslem(@Field("id") String id, @Field("hasid") String hasid);
 }

@@ -47,7 +47,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+   <Button
             android:id="@+id/sorusorbuton"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
